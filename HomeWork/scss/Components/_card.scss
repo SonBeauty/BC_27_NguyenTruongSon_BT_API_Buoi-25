@@ -1,0 +1,17 @@
+.card{
+    width: $wi-1;
+    .card-body{
+        text-align: center;
+        h6{
+            @include styleText($fs-9, $fw-2, $color-pink)
+        }
+        h5 {
+            @include styleText(1.55rem, $fw-b,$color-black)
+        }
+    }
+}
+@include responsive(large){
+    .card{
+        width: 28rem;
+    }
+}

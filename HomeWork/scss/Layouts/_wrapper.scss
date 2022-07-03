@@ -1,0 +1,47 @@
+.wrapper {
+    position: relative;
+    bottom: 240px;
+
+    .container {
+        .wrapper-1 {
+            display: flex;
+
+            .wrapper-text {
+                padding-top: 210px;
+                padding-right: 40px;
+
+                h3 {
+                    @include styleText($fs-8, $fw-1, $color-pink);
+                }
+
+                span {
+                    @include styleText($fs-7, $fw-3, $color-black);
+                    line-height: 0.8;
+                }
+            }
+        }
+    }
+}
+
+@include responsive(large) {
+    .wrapper {
+        bottom: 222px;
+        .container {
+            margin-right: 20px;
+            margin-left: 20px;
+            max-width: 100%;
+            .wrapper-1 {
+                display: block;
+                .wrapper-text{
+                    padding-top: 30px;
+                    span{
+                        font-size: 3rem;
+                        br{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

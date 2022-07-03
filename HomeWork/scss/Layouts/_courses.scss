@@ -1,0 +1,119 @@
+.courses {
+    padding-top: 380px;
+
+    .container {
+        .title {
+            text-align: center;
+        }
+
+        .courses-1 {
+            display: flex;
+            column-gap: 60px;
+
+            .courses-img {
+                padding-left: 60px;
+            }
+
+            .courses-info {
+                border: 1px solid rgba(0, 0, 0, .1);
+                background-color: $color-white;
+                border-radius: 20px;
+                padding: 65px 25px;
+                height: 90%;
+                margin-top: 20px;
+
+                .title {
+                    @include styleText($fs-10, $fw-b, $color-black);
+                    margin-bottom: 35px;
+                }
+
+                .courses-header {
+                    display: flex;
+                    column-gap: 14px;
+                }
+
+                .btn-course {
+                    margin-top: 30px;
+                    margin-left: 5px;
+                    font-size: .8rem;
+
+                    button {
+                        padding: 15px 57px 15px 57px;
+                    }
+                }
+            }
+
+            .input {
+                margin-bottom: 15px;
+
+                i {
+                    position: relative;
+                    left: 20px;
+                    top: 35px;
+                }
+
+                @include styleText(inherit, $fs-1, $color-pink);
+
+                .select {
+                    border: 1px solid rgba(0, 0, 0, .1);
+                    border-radius: 50px;
+                    width: 97%;
+                    padding: 0.5em 1em 0.5em 3.5em;
+                    font-size: .8em;
+                    height: 2.7em;
+                    margin-left: -20px;
+                }
+            }
+
+            .gradutation {
+                i {
+                    top: 0;
+                }
+            }
+
+            .message {
+                textarea {
+                    width: 97%;
+                    padding: 1em 1em 1em 3.5em;
+                    height: 90px;
+                    line-height: 1.5;
+                    font-size: .8em;
+                    border-radius: 20px;
+                    border: 1px solid rgba(0, 0, 0, .1);
+                }
+            }
+        }
+
+    }
+}
+
+@include responsive(large) {
+    .courses {
+        position: relative;
+        top: 1272px;
+
+        .container {
+            margin-left: 0;
+            margin-right: 0;
+            max-width: inherit;
+            .courses-1 {
+                display: block;
+
+                .courses-info {
+                    width: 96%;
+                    margin: auto;
+                    .courses-info-1{
+                        .input i{
+                            left: 35px;
+                            top: 2px;
+                        }
+                    }
+                    .title{
+                        text-align: left;
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}

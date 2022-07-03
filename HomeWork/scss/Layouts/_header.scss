@@ -1,0 +1,65 @@
+.header-img {
+    background: url(../img/yellow_top_wave_01.png) 1px 0%/contain no-repeat;
+    height: 300px;
+    z-index: 20;
+}
+
+header {
+    width: 100%;
+    z-index: 10;
+
+    .toolbar{
+        position: fixed;
+        width: 100%;
+        z-index: 9;
+        .toobar-fixed{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin-left: 194px;
+        }
+        .navbar{
+            padding: 0.3rem 1rem
+        }
+    }
+    .header {
+        display: flex;
+
+        .logo {
+            margin-right: $mg-2;
+            z-index: 20;
+        }
+    }
+
+    .collapse {
+        a {
+            @include styleText($fs-1, $fw-b, $color-black);
+
+            &:hover {
+                @include styleTextHover($color-pink)
+            }
+        }
+    }
+
+    .btn-header {
+        margin-top: $mg-5;
+        margin-right: $mg-4;
+    }
+
+    .icon-header {
+        display: flex;
+        margin-top: $mg-5;
+
+        a {
+            @include styleIcon($fs-2, $color-black);
+            margin-right: $mg-5 ;
+
+            &:hover {
+                @include styleTextHover($color-pink)
+            }
+        }
+    }
+}
+.sticky{
+    background-color: $color-white;
+}

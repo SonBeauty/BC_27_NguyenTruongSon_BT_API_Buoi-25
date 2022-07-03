@@ -1,0 +1,172 @@
+footer {
+    position: relative;
+
+    .footer-img-1 {
+        position: absolute;
+        top: -352px;
+        z-index: -1;
+
+        img {
+            background-size: cover;
+            width: 100%;
+        }
+    }
+
+    .footer-img-2 {
+        position: absolute;
+        z-index: -3;
+        top: 25px;
+
+        img {
+            background-size: cover;
+            width: 100%;
+        }
+    }
+
+    .container {
+        display: flex;
+        position: relative;
+        top: 110px;
+        column-gap: 50px;
+
+        .icon-header {
+            display: flex;
+            margin-top: 25px;
+
+            .icon_item {
+                margin-left: $mg-5;
+                margin-right: $mg-5;
+
+                a:hover {
+                    color: $color-black;
+                }
+            }
+        }
+    }
+
+    .container {
+        @include styleText(.9rem, $fw-1, $color-white);
+
+        .title-1 {
+            @include styleText(1.55rem, $fw-b, $color-white);
+            margin-bottom: 30px;
+        }
+
+        .Link {
+            margin-left: 25px;
+            margin-right: 90px;
+        }
+
+        .footer-link {
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #9a0171;
+            margin-right: -70px;
+        }
+
+        a {
+            @include styleText(.9rem, $fw-1, $color-white);
+            text-decoration: none;
+
+            &:hover {
+                color: #daa4c9;
+            }
+        }
+
+        .About {
+            margin-right: 90px;
+
+            .footer-link {
+                margin-right: -110px;
+            }
+
+        }
+
+        .Newsletter {
+            margin-left: 40px;
+            margin-right: 10px;
+
+            .title-1 {
+                margin-bottom: 60px;
+            }
+
+            input {
+                text-align: center;
+                padding: 1em 1em 1em 1rem;
+                width: 100%;
+                border: 1px solid rgba(255, 255, 255, .1);
+                height: 3.2rem;
+                background-color: #aa017e;
+                color: $color-white;
+
+                &::placeholder {
+                    color: $color-white;
+                }
+            }
+
+            button {
+                width: 100%;
+                @include styleButton($color-white, $pd-2, $pd-3, 1px solid, $pd-1, null);
+                color: $color-black;
+                height: 3.2rem;
+                margin-top: 10px;
+
+                &:hover {
+                    @include styleButtonHover(#aa017e, $color-white, $color-white)
+                }
+            }
+        }
+    }
+
+}
+
+@include responsive(large) {
+    footer {
+        position: relative;
+        top: 1050px;
+        z-index: -1;
+        .footer-img-1{
+            position: none;
+            top: -355px;
+            z-index: -1;
+        }
+        .footer-img-2{
+            background-color: #aa017e;
+            top: -109px;
+            height: 800px;
+            img[src="./img/footer_background.jpg"]{
+                background: url(../../img/Violet_top_left_wave.png);
+                position: relative;
+                top: 695px;
+            }
+
+        }
+        .container{
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            position: absolute;
+            top: 266px;
+            flex-wrap: wrap;
+            .footer-link{
+                margin-right: -234px;
+            }
+            .Contact{
+                width: 28rem;
+                margin-left: 20px;
+                margin-bottom: 65px;
+            }
+            .Link{
+                margin-left: 30px;
+            }
+            .About{
+                width: 18rem;
+                margin-left: 20px;
+            }
+            .Newsletter{
+                margin-left: 97px;
+                width: 42%;
+            }
+        }
+    }
+}

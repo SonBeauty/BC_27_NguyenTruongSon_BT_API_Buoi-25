@@ -1,0 +1,8 @@
+button {
+    @include styleButton($color-pink, $pd-2, $pd-3, $color-pink, $pd-1, null);
+    color: $color-white;
+
+    &:hover {
+        @include styleButtonHover($color-white, $color-pink, $color-pink)
+    }
+}

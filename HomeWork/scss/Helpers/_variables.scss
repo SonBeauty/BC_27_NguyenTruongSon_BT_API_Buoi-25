@@ -1,0 +1,58 @@
+$color-pink: #b61984;
+$color-black: #191919;
+$color-white: #ffffff;
+
+
+// with:
+$max-with: 1260px;
+
+
+//font size
+$fs-1: 13px;
+$fs-2: 1.25rem;
+$fs-3: 1.8rem;
+$fs-4: 70px;
+$fs-5: 1.6rem;
+$fs-6: 2.25rem;
+$fs-7: 3.8rem;
+$fs-8: 1.1rem;
+$fs-9: 0.75rem;
+$fs-10: 2.3rem;
+
+
+
+//font weight
+$fw-1: 400;
+$fw-2: 600;
+$fw-3: 700;
+$fw-4: 900;
+$fw-b: bold;
+
+//line height
+$lh-1: 1;
+$lh-2: 1.2;
+
+$wi-1: 18rem;
+
+//margin
+$mg-1: 100px;
+$mg-2: 200px;
+$mg-3: 300px;
+$mg-4: 30px;
+$mg-5: 10px;
+
+//padding
+$pd-1: 50px;
+$pd-2: 0.3rem;
+$pd-3: 1.5rem;
+
+$breakpoints: (
+    "extra-large": 1200px,
+    "large": 992px,
+    "medium": 768px,
+    "small": 576px,
+    "extra-large-down": 1199.98px,
+    "large-down": 991.98px,
+    "medium-down": 767.98px,
+    "small-down": 575.98px,
+);
