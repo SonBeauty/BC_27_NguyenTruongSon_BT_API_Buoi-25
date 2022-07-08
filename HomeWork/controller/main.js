@@ -6,14 +6,14 @@ function main() {
         for (let i = 0; i < teachers.length; i++) {
             const teacher = teachers[i];
             teachers[i] = new Teacher(
-                teacher.id= id,
-                teacher.taiKhoan = taiKhoan,
-                teacher.hoTen = hoTen,
-                teacher.matKhau = matKhau,
-                teacher.email = email,
-                teacher.loaiND = loaiND,
-                teacher.ngonNgu = ngonNgu,
-                teacher.hinhAnh = hinhAnh
+                id = teacher.id,
+                taiKhoan = teacher.taiKhoan,
+                hoTen = teacher.hoTen,
+                matKhau = teacher.matKhau,
+                email = teacher.email,
+                loaiND = teacher.loaiND,
+                ngonNgu = teacher.ngonNgu,
+                hinhAnh = teacher.hinhAnh
             )
         }
         display(teachers)
@@ -21,9 +21,10 @@ function main() {
 }
 
 function display(teachers) {
-    const divEl = "";
+    let divEl = "";
     for (let i = 0; i < teachers.length; i++) {
         const teacher = teachers[i];
+        console.log(teacher.hinhAnh)
         divEl += `
         <div class="card">
         <img src="${teacher.hinhAnh}"></img>
