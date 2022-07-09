@@ -13,7 +13,8 @@ function main() {
                 email = teacher.email,
                 loaiND = teacher.loaiND,
                 ngonNgu = teacher.ngonNgu,
-                hinhAnh = teacher.hinhAnh
+                moTa = teacher.moTa,
+                hinhAnh = teacher.hinhAnh,
             )
         }
         display(teachers)
@@ -25,14 +26,18 @@ function display(teachers) {
     for (let i = 0; i < teachers.length; i++) {
         const teacher = teachers[i];
         console.log(teacher.hinhAnh)
-        divEl += `
+        if (teacher.loaiND === "GV") {
+            divEl += `
         <div class="card">
         <img src="${teacher.hinhAnh}"></img>
-        <h6>${teacher.ngonNgu}</h6>
+        <div class="card-body">
+        <h6 class="card-title">${teacher.ngonNgu}</h6>
         <h5>${teacher.hoTen}</h5>
         <p>${teacher.moTa}</p>
         </div>
+        </div>
         `
+        }
+        document.getElementById("cardEl").innerHTML = divEl;
     }
-    document.getElementById("cardEl").innerHTML = divEl;
 }
