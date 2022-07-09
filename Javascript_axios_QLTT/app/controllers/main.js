@@ -1,31 +1,32 @@
 main()
 
 function main() {
-    apiGetUser().then(function (result) {
-        const users = result.data;
+  apiGetUser().then(function (result) {
+    const users = result.data;
 
-        for (let i = 0; i < users.length; i++) {
-            const user = users[i];
-            users[i] = new User(
-                user.id,
-                user.account,
-                user.password,
-                user.name,
-                user.email,
-                user.position,
-                user.language,
-                user.action, user.image
-            )
-        }
-        display(users)
-    })
+    for (let i = 0; i < users.length; i++) {
+      const user = users[i];
+      users[i] = new User(
+        user.id,
+        user.account,
+        user.password,
+        user.name,
+        user.email,
+        user.position,
+        user.language,
+        user.action,
+        user.image
+      )
+    }
+    display(users)
+  })
 }
 
 function display(users) {
-    let html = "";
-    for (let i = 0; i < users.length; i++) {
-        const user = users[i];
-        html += `<tr>
+  let html = "";
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    html += `<tr>
         <td>${i + 1}</td>
         <td>${user.account}</td>
         <td>${user.password}</td>
@@ -53,94 +54,95 @@ function display(users) {
         </td>
       </tr>
     `;
-    }
-    document.getElementById("tblDanhSachNguoiDung").innerHTML = html
+  }
+  document.getElementById("tblDanhSachNguoiDung").innerHTML = html
 }
 
 // hàm xử lý gọi API thêm người dùng
 function addUser() {
-    // B1: DOM lấy value
-    const account = document.getElementById("TaiKhoan").value;
-    const name = document.getElementById("HoTen").value;
-    const password = document.getElementById("MatKhau").value;
-    const Email = document.getElementById("Email").value;
-    const image = document.getElementById("HinhAnh").value;
-    const position = document.getElementById("loaiNguoiDung").value;
-    const language = document.getElementById("loaiNgonNgu").value;
-    const description = document.getElementById("MoTa").value;
-    // B2: Khởi tạo đối tượng Product
-    const user = new User(null, account, name, password, Email, image, position, language, description);
-    // B3: Gọi API thêm sản phẩm
+  // B1: DOM lấy value
+  const account = document.getElementById("TaiKhoan").value;
+  const name = document.getElementById("HoTen").value;
+  const password = document.getElementById("MatKhau").value;
+  const email = document.getElementById("Email").value;
+  const image = document.getElementById("HinhAnh").value;
+  const position = document.getElementById("loaiNguoiDung").value;
+  const language = document.getElementById("loaiNgonNgu").value;
+  const description = document.getElementById("MoTa").value;
+  // B2: Khởi tạo đối tượng User
+  const user = new User(null, account, password, name, email, position, language, description, image)
+  // B3: Gọi API thêm sản phẩm
 
-    apiAddUser(user)
-        .then(function (result) {
-            // Thêm thành công, tuy nhiên lúc này dữ liệu chỉ mới được thay đổi ở phía server
-            // Gọi tới hàm main để call API get products và hiển thị ra giao diện
-            main();
-            resetForm();
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+  apiAddUser(user)
+    .then(function (result) {
+      // Thêm thành công, tuy nhiên lúc này dữ liệu chỉ mới được thay đổi ở phía server
+      // Gọi tới hàm main để call API get products và hiển thị ra giao diện
+      main();
+      resetForm();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 // Hàm xử lý gọi API xoá người dùng
 function deleteUser(userId) {
-    apiDeleteUser(userId)
-        .then(function () {
-            // Xoá thành công
-            main();
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+  apiDeleteUser(userId)
+    .then(function () {
+      // Xoá thành công
+      main();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 function updateUser() {
-    // B1: DOM lấy value
-    const account = document.getElementById("TaiKhoan").value;
-    const name = document.getElementById("HoTen").value;
-    const password = document.getElementById("MatKhau").value;
-    const Email = document.getElementById("Email").value;
-    const image = document.getElementById("HinhAnh").value;
-    const position = document.getElementById("loaiNguoiDung").value;
-    const language = document.getElementById("loaiNgonNgu").value;
-    const description = document.getElementById("MoTa").value;
-  
-    // B2: Khởi tạo đối tượng user
-    const user = new User(account, name, password, Email, image,position,language,description);
-  
-    // B3: Gọi API cập nhật sản phẩm
-    apiUpdateUser(user)
-      .then(function (result) {
-        // Cập nhật thành công, dữ liệu chỉ mới thay đổi ở phía server, cần gọi lại API getusers và hiển thị lại giao diện (đã làm trong hàm main)
-        main();
-        resetForm();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-function resetForm() {
-    document.getElementById("TaiKhoan").value = "";
-    document.getElementById("HoTen").value = "";
-    document.getElementById("MatKhau").value = "";
-    document.getElementById("Email").value = "";
-    document.getElementById("HinhAnh").value = "";
-    document.getElementById("loaiNguoiDung").value = "";
-    document.getElementById("loaiNgonNgu").value = "";
-    document.getElementById("MoTa").value = "";
+  // B1: DOM lấy value
+  const id = document.getElementById("MaUser").value;
+  const account = document.getElementById("TaiKhoan").value;
+  const name = document.getElementById("HoTen").value;
+  const password = document.getElementById("MatKhau").value;
+  const email = document.getElementById("Email").value;
+  const image = document.getElementById("HinhAnh").value;
+  const position = document.getElementById("loaiNguoiDung").value;
+  const language = document.getElementById("loaiNgonNgu").value;
+  const description = document.getElementById("MoTa").value;
 
-    // Đóng modal
-    $("#myModal").modal("hide");
+  // B2: Khởi tạo đối tượng user
+  const user = new User(id,account, password, name, email, position, language, description, image);
+
+  // B3: Gọi API cập nhật sản phẩm
+  apiUpdateUser(user)
+    .then(function (result) {
+      // Cập nhật thành công, dữ liệu chỉ mới thay đổi ở phía server, cần gọi lại API getusers và hiển thị lại giao diện (đã làm trong hàm main)
+      main();
+      resetForm();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+function resetForm() {
+  document.getElementById("TaiKhoan").value = "";
+  document.getElementById("HoTen").value = "";
+  document.getElementById("MatKhau").value = "";
+  document.getElementById("Email").value = "";
+  document.getElementById("HinhAnh").value = "";
+  document.getElementById("loaiNguoiDung").value = "";
+  document.getElementById("loaiNgonNgu").value = "";
+  document.getElementById("MoTa").value = "";
+
+  // Đóng modal
+  $("#myModal").modal("hide");
 }
 
 // DOM
 document.getElementById("btnThemNguoiDung").addEventListener("click", showAddModal);
 function showAddModal() {
-    // Thay đổi text của modal header
-    document.querySelector(".modal-header").innerHTML = "Thêm người dùng";
-    document.querySelector(".modal-footer").innerHTML = `
+  // Thay đổi text của modal header
+  document.querySelector(".modal-header").innerHTML = "Thêm người dùng";
+  document.querySelector(".modal-footer").innerHTML = `
     <button
       class="btn btn-primary"
       data-type="add"
@@ -161,51 +163,51 @@ function showAddModal() {
 document.querySelector(".modal-footer").addEventListener("click", handleSubmit);
 // Các hàm callback được gọi tới khi event được kích hoạt đồng thời nhận được 1 tham số là đối tượng Event
 function handleSubmit(event) {
-    const type = event.target.getAttribute("data-type");
+  const type = event.target.getAttribute("data-type");
 
-    switch (type) {
-        case "add":
-            addUser();
-            break;
-        case "update":
-            updateUser();
-            break;
-        default:
-            break;
-    }
+  switch (type) {
+    case "add":
+      addUser();
+      break;
+    case "update":
+      updateUser();
+      break;
+    default:
+      break;
+  }
 }
 
 
 document
-    .getElementById("tblDanhSachNguoiDung")
-    .addEventListener("click", handleProductAction);
+  .getElementById("tblDanhSachNguoiDung")
+  .addEventListener("click", handleProductAction);
 
 function handleProductAction(event) {
-    // Loại button (delete || update)
-    const type = event.target.getAttribute("data-type");
-    // Id của sản phẩm
-    const id = event.target.getAttribute("data-id");
+  // Loại button (delete || update)
+  const type = event.target.getAttribute("data-type");
+  // Id của sản phẩm
+  const id = event.target.getAttribute("data-id");
 
-    switch (type) {
-        case "delete":
-            deleteUser(id);
-            break;
-        case "update": {
-            // Cập nhật giao diện cho modal và call API get thông tin của sản phẩm và fill lên form
-            showUpdateModal(id);
-            break;
-        }
-
-        default:
-            break;
+  switch (type) {
+    case "delete":
+      deleteUser(id);
+      break;
+    case "update": {
+      // Cập nhật giao diện cho modal và call API get thông tin của sản phẩm và fill lên form
+      showUpdateModal(id);
+      break;
     }
+
+    default:
+      break;
+  }
 }
 
 
 function showUpdateModal(userId) {
-    // Thay đổi text của modal heading/ modal footer
-    document.querySelector(".modal-title").innerHTML = "Cập nhật người dùng";
-    document.querySelector(".modal-footer").innerHTML = `
+  // Thay đổi text của modal heading/ modal footer
+  document.querySelector(".modal-title").innerHTML = "Cập nhật người dùng";
+  document.querySelector(".modal-footer").innerHTML = `
       <button
         class="btn btn-primary"
         data-type="update"
@@ -220,23 +222,23 @@ function showUpdateModal(userId) {
       </button>
     `;
 
-    // Call API để lấy chi tiết sản phẩm
-    apiGetUserDetail(userId)
-        .then(function (result) {
-            // Thành công, fill data lên form
-            const user = result.data;
-            document.getElementById("TaiKhoan").value = user.account;
-            document.getElementById("HoTen").value = user.name;
-            document.getElementById("MatKhau").value = user.password;
-            document.getElementById("Email").value = user.Email;
-            document.getElementById("HinhAnh").value = user.image;
-            document.getElementById("loaiNguoiDung").value = user.position;
-            document.getElementById("loaiNgonNgu").value = user.language;
-            document.getElementById("MoTa").value = user.description;
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+  // Call API để lấy chi tiết sản phẩm
+  apiGetUserDetail(userId)
+    .then(function (result) {
+      // Thành công, fill data lên form
+      const user = result.data;
+      document.getElementById("TaiKhoan").value = user.account;
+      document.getElementById("HoTen").value = user.name;
+      document.getElementById("MatKhau").value = user.password;
+      document.getElementById("Email").value = user.Email;
+      document.getElementById("HinhAnh").value = user.image;
+      document.getElementById("loaiNguoiDung").value = user.position;
+      document.getElementById("loaiNgonNgu").value = user.language;
+      document.getElementById("MoTa").value = user.description;
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 // DOM tới input search
@@ -402,6 +404,6 @@ function idturn(taiKhoan) {
     display(users);
   } else {
     alert("tài khoản bị trùng");
-}
+  }
 }
 

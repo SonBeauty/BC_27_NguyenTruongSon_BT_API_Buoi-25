@@ -14,7 +14,7 @@ function apiAddUser(user){
     return axios({
         url: baseUrl,
         method:"POST",
-        data: product,
+        data: user,
     })
 }
 
