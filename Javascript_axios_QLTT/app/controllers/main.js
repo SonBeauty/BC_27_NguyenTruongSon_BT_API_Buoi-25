@@ -110,8 +110,8 @@ function updateUser() {
   const description = document.getElementById("MoTa").value;
 
   // B2: Khởi tạo đối tượng user
-  const user = new User(id,account, password, name, email, position, language, description, image);
-
+  const user = new User(id, account, password, name, email, position, language, description, image);
+  console.log(user)
   // B3: Gọi API cập nhật sản phẩm
   apiUpdateUser(user)
     .then(function (result) {
@@ -222,11 +222,12 @@ function showUpdateModal(userId) {
       </button>
     `;
 
-  // Call API để lấy chi tiết sản phẩm
+  // Call API để lấy chi tiết 
   apiGetUserDetail(userId)
     .then(function (result) {
       // Thành công, fill data lên form
       const user = result.data;
+      document.getElementById("MaUser").value = user.id;
       document.getElementById("TaiKhoan").value = user.account;
       document.getElementById("HoTen").value = user.name;
       document.getElementById("MatKhau").value = user.password;

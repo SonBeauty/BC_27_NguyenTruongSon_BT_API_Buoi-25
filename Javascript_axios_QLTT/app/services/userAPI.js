@@ -35,8 +35,8 @@ function apiGetUserDetail(userId){
 
 function apiUpdateUser(user) {
     return axios({
-      url: `${baseUrl}/${user.id}`,
-      data: user,
+        url: `${baseUrl}/${user.id}`,
+        data: user,
       method: "PUT",
     });
   }
